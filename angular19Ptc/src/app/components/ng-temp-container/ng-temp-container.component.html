@@ -1,0 +1,64 @@
+<div class="row mt-4">
+    <div class="col-4">
+
+    </div>
+    <div class="col-4">
+        <table class="table table-bordered">
+            <thead class="table-primary">
+                <tr>
+                    <th>SL#</th>
+                    <th>Emp ID</th>
+                    <th>Emp Name</th>
+                    <th>Contact No.</th>
+                    <th>Attendance</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngIf="isLoading">
+                    <div [ngTemplateOutlet]="tempLoader" class="text-center"></div>
+                </ng-container>
+
+                <ng-container *ngIf="!isLoading">
+                    <tr *ngFor="let emp of employeeList; let slno = index">
+                        <td>{{slno+1}}</td>
+                        <td>{{emp.empId}}</td>
+                        <td>{{emp.empName}}</td>
+                        <td>{{emp.contactNo}}</td>
+                        <td>{{emp.attendance}}</td>
+                        <td>
+                            @if (emp.isActive) {
+                                <span [ngTemplateOutlet]="tempActive"></span>
+                            } @else {
+                                <span [ngTemplateOutlet]="tempInactive"></span>
+                            }
+                            
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #tempLoader>
+    <div class="text-center">
+        <div class="spinner-border text-muted"></div>
+        <div class="spinner-border text-primary"></div>
+        <div class="spinner-border text-success"></div>
+        <div class="spinner-border text-info"></div>
+        <div class="spinner-border text-warning"></div>
+        <div class="spinner-border text-danger"></div>
+        <div class="spinner-border text-secondary"></div>
+        <div class="spinner-border text-dark"></div>
+        <div class="spinner-border text-light"></div>
+    </div>
+</ng-template>
+
+<ng-template #tempInactive>
+    <span class="text-danger fw-bold">I</span>
+</ng-template>
+
+<ng-template #tempActive>
+    <span class="text-success fw-bold">A</span>
+</ng-template>

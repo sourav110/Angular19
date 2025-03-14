@@ -1,0 +1,61 @@
+<div class="row mt-4">
+    <div class="col-3">
+        <ul>
+            <li *ngFor="let city of cityList">{{city}}</li>
+        </ul>
+    </div>
+    <div class="col-3">
+        <button *ngFor="let city of cityList" class="btn btn-success me-1">{{city}}</button>
+
+        <div *ngFor="let city of cityList">
+            <span>{{city}}</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mt-4">
+    <div class="col-3">
+        <select>
+            <option *ngFor="let emp of employeeList" [value]="emp.empId">{{emp.empName}}</option>
+        </select>
+    </div>
+    <div class="col-3">
+        <div class="py-2">
+            <app-progress-bar [bgClass]="'bg-success'" [progressPercentage]="50"></app-progress-bar>
+        </div>
+
+        <table class="table table-bordered"> 
+            <thead class="table-primary">
+                <tr>
+                    <th>SL#</th>
+                    <th>Emp ID</th>
+                    <th>Emp Name</th>
+                    <th>Contact No.</th>
+                    <th>Attendance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let emp of employeeList; let slno = index">
+                    <td>{{slno+1}}</td>
+                    <td>{{emp.empId}}</td>
+                    <td>{{emp.empName | na}}</td>
+                    <td>{{emp.contactNo}}</td>
+                    <td>
+                        @if (emp.attendance < 25) {
+                            <app-progress-bar [bgClass]="'bg-danger'" [progressPercentage]="emp.attendance"></app-progress-bar>
+                        } @else if (emp.attendance >= 25 && emp.attendance <= 80) {
+                            <app-progress-bar [bgClass]="'bg-primary'" [progressPercentage]="emp.attendance"></app-progress-bar>
+                        } @else {
+                            <app-progress-bar [bgClass]="'bg-success'" [progressPercentage]="emp.attendance"></app-progress-bar>
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-3">
+        <app-tabs [tabList]="tabList"></app-tabs>
+    </div>
+</div>

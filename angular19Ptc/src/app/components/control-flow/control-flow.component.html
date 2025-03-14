@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-3">
+        @if (isVisible) {
+            <div class="bg-success p-3 text-white">
+                Div 1
+            </div>
+        }
+        <button class="btn btn-success" (click)="chkVisibility(true)">Show</button>
+        <button class="btn btn-danger" (click)="chkVisibility(false)">Hide</button>
+    </div>
+    <div class="col-3">
+        <div class="bg-info p-3 text-white">
+            @if (isChecked) {
+                The chekbox is checked
+            }
+            @else {
+                The chekbox is not checked
+            }
+        </div>
+
+        <input type="checkbox" [(ngModel)]="isChecked" />
+        
+    </div>
+    <div class="col-3">
+        <select class="form-control">
+            @for (city of cityList; track $index) {
+                <option value="{{$index}}">{{city}}</option>
+            }
+        </select>
+        
+        <br>
+        <span>Employee List</span>
+
+        <table class="table table-bordered"> 
+            <thead class="table-primary">
+                <tr>
+                    <th>SL#</th>
+                    <th>Emp ID</th>
+                    <th>Emp Name</th>
+                    <th>Contact No.</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (emp of employeeList; track $index) {
+                    <tr>
+                        <td>{{$index+1}}</td>
+                        <td>{{emp.empId}}</td>
+                        <td>{{emp.empName}}</td>
+                        <td>{{emp.contactNo}}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

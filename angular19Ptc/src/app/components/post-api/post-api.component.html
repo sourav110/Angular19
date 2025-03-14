@@ -1,0 +1,121 @@
+<div class="row p-2">
+    <div class="col-12 text-center p-2">
+        <app-tabs [tabList]="tabList" (onTabClicked)="onTabChange($event)"></app-tabs>
+    </div>
+
+    @if (currentTab == "Car List") {
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-warning h3">
+                    Car List
+                </div>
+                <div class="card-body">
+                    <!-- <button class="btn btn-success mb-2" (click)="getAllCars()">Load Cars</button>     -->
+    
+                    <table class="table table-bordered mt-2">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>SL#</th>
+                                <th>brand</th>
+                                <th>model</th>
+                                <th>year</th>
+                                <th>color</th>
+                                <th>dailyRate</th>
+                                <th>regNo</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of carList; track $index) {
+                                <tr>
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{item.brand}}</td>
+                                    <td>{{item.model}}</td>
+                                    <td>{{item.year}}</td>
+                                    <td>{{item.color}}</td>
+                                    <td>{{item.dailyRate}}</td>
+                                    <td>{{item.regNo}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary me-2" (click)="getCarInfo(item)">Edit</button>
+                                        <button type="button" class="btn btn-danger" (click)="deleteCar(item.carId)">Delete</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+    
+                    <!-- Pipe Example -->
+                    <!-- playerName => {{playerName}} <br/>
+                    uppercase => {{playerName | uppercase}} <br/>
+                    lowercase => {{playerName | lowercase}} <br/>
+                    date => {{currentDate | date}} <br/>
+                    date => {{currentDate | date: 'dd-mm-yyyy'}} <br/>
+                    date => {{currentDate | date: 'dd-MMM-yyyy'}} <br/>
+                    playerObj => {{playerObj | json}} <br/> -->
+    
+                </div>
+            </div>
+        </div>
+    } @else {
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-warning h3">
+                    @if (carObj.carId == 0) {
+                        Add New Car
+                    } 
+                    @else{
+                        Update Car Information
+                    }
+                </div>
+                <div class="card-body">
+                    <form (ngSubmit)="saveCarInfo()">
+                        <div class="row">
+                            <div class="col-6 mt-2">
+                                <label class="col-form-label fw-bold">Brand</label>
+                                <input type="text" class="form-control" name="brand" [(ngModel)]="carObj.brand" />
+                            </div>
+    
+                            <div class="col-6 mt-2">
+                                <label class="col-form-label fw-bold">Model</label>
+                                <input type="text" class="form-control" name="model" [(ngModel)]="carObj.model" />
+                            </div>
+    
+                            <div class="col-6 mt-2">
+                                <label class="col-form-label fw-bold">Year</label>
+                                <input type="text" class="form-control" name="year" [(ngModel)]="carObj.year" />
+                            </div>
+    
+                            <div class="col-6 mt-2">
+                                <label class="col-form-label fw-bold">Color</label>
+                                <input type="text" class="form-control" name="color" [(ngModel)]="carObj.color" />
+                            </div>  
+    
+                            <div class="col-6 mt-2">
+                                <label class="col-form-label fw-bold">Reg No.</label>
+                                <input type="text" class="form-control" name="regNo" [(ngModel)]="carObj.regNo" />
+                            </div>
+    
+                            <div class="col-6 mt-2">
+                                <label class="col-form-label fw-bold">Daily Rate</label>
+                                <input type="text" class="form-control" name="dailyRate" [(ngModel)]="carObj.dailyRate" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <button class="btn btn-secondary me-2" type="button" (click)="resetForm()">Reset</button>
+                                @if (carObj.carId == 0) {
+                                    <button class="btn btn-success" type="submit">Save</button>
+                                } 
+                                @else{
+                                    <button class="btn btn-warning" type="submit">Update</button>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+    
+</div>

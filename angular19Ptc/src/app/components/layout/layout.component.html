@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="admin">Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="user">User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="dataBinding">DataBinding</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="ngIf">NgIf</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="ngFor">NgFor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="ngClass">NgClass</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="controlFlow">ControlFlow</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="templateForm">Template Driven</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="reactiveForm">Reactive Form</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="getApi">Get Api</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="postApi">Post Api</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="resourceApi">Resource Api</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="customer">Customer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="lifeCycle">Life Cycle</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="ngTempContainer">Ng Template Container</a>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+              Api 
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="getApi">Get Api</a></li>
+              <li><a class="dropdown-item" routerLink="postApi">Post Api</a></li>
+              <li><a class="dropdown-item" routerLink="putApi">Put Api</a></li>
+              <li><a class="dropdown-item" routerLink="deleteApi">Delete Api</a></li>
+            </ul>
+          </li> -->
+        </ul>
+        <form class="d-flex">
+          <button class="btn btn-primary" type="button" (click)="onLogout()">Logout</button>
+        </form>
+      </div>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

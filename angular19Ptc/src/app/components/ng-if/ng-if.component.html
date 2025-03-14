@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-3">
+        <div class="bg-primary my-4 text-white" *ngIf="div1Visible">
+            Div 1
+        </div>
+        <button class="btn btn-success" (click)="showDiv1()">Show</button>
+        <button class="btn btn-danger mx-2" (click)="hideDiv1()">Hide</button>
+    </div>
+    
+    
+    <div class="col-3">
+        <div class="bg-success my-4 text-white" *ngIf="num1 == num2">
+            Two Numbers are Same !!
+        </div>
+
+        <div class="bg-danger my-4 text-white" *ngIf="num1 != num2">
+            Two Numbers are Different !!
+        </div>
+        
+        <input type="number" [(ngModel)]="num1">
+        <input type="number" [(ngModel)]="num2">
+        <span>{{num1 == num2}}</span>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="row mt-4">
+    <div class="col-3">
+        1. Interpolation <br>
+        <span>First Name: </span> {{firstName}} <br>
+        <span>Last Name: </span> {{lastName}} <br>
+        <span>Age: </span> {{age}} <br>
+    </div>
+    <div class="col-3">
+        2. Property Binding <br>
+        <input type="text" [placeholder]="placeHolderFirstName">
+        <input type="text" [value]="firstName+ ' ' + lastName">
+        <!-- <input type="text" [placeholder]="placeHolderAge">
+        <input type="text" [value]="age"> -->
+
+    </div>
+    <div class="col-3">
+        3. Event Binding <br>
+        <button class="btn btn-success" (click)="showWelcomeMessage()">Welcome User</button>
+
+        <select (change)="onCountryChange()">
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="India">India</option>
+            <option value="Srilanka">Srilanka</option>
+            <option value="Nepal">Nepal</option>
+        </select>
+    </div>
+    <div class="col-3">
+        4. Model Binding (two way)
+        <input type="text" [(ngModel)]="firstName"> <br>
+
+        <select [(ngModel)]="selectedCity">
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="India">India</option>
+            <option value="Srilanka">Srilanka</option>
+            <option value="Nepal">Nepal</option>
+        </select>
+
+        <span>Country: {{selectedCity}}</span>
+    </div>
+</div>

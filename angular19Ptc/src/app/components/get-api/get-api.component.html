@@ -1,0 +1,46 @@
+<div class="row p-4">
+    <h3>Get Api Sample</h3>
+
+    <div class="col-12">
+        <select class="form-control mb-2">
+            @for (item of userList; track $index) {
+                <option value="{{item.id}}">{{item.name}} ({{item.email}})</option>
+            }
+        </select>
+
+        <button class="btn btn-success mb-2" (click)="getProductList()">Load Products</button>  
+        
+        <table class="table table-bordered mt-2">
+            <thead class="table-primary">
+                <tr>
+                    <th>SL#</th>
+                    <th>product_id</th>
+                    <th>name</th>
+                    <th>description</th>
+                    <th>price</th>
+                    <th>unit</th>
+                    <th>discount</th>
+                    <th>brand</th>
+                    <th>category</th>
+                    <th>rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of productList; track $index) {
+                    <tr>
+                        <td>{{$index + 1}}</td>
+                        <td>{{item.product_id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.unit}}</td>
+                        <td>{{item.discount}}</td>
+                        <td>{{item.brand}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.rating}}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
